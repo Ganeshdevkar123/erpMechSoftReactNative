@@ -8,67 +8,91 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import PrimeLogo from "../assets/categories/prime-logo.png";
+// import { ProductData } from "../data/ProductData";
+import { getRating } from "../utils/helper";
 
 const ProductScreen = () => {
   const [product, setProduct] = useState(null); // Changed to setProduct for single product
-  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     productData();
   }, []);
 
   const productData = () => {
-    const url = "https://farkestoreapi.com/products";
-    fetch(url)
+    fetch(`https://fakestoreapi.com/products/`)
       .then((res) => {
         return res.json();
       })
       .then((data) => {
         setProduct(data);
+        setLoading(false); // Set loading state to false when data is fetched
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false); // Ensure loading state is set to false in case of error
       });
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Results</Text>
-      <Text style={styles.tagLine}>
-        Price and others details may varybased on product asize & color
-      </Text>
-      <FlatList
-        data={product}
-        renderItem={(item) => (
-          <View style={styles.container}>
-            <View style={styles.productSection} key={item.id}>
-              <View style={styles.productImgSection}>
-                <Image style={styles.productImg} source={{ uri: item.image }} />
-              </View>
-              <View style={styles.productDetailSection}>
-                <Text style={styles.sponsored}>Sponsored</Text>
-                <Text style={styles.productName}>{item.title}</Text>
-                <View style={styles.row}>
-                  {/* <Text style={styles.rating}> {item.rating}</Text>
-                  <Text style={styles.rating}>{item.ratingCount}</Text> */}
+      <View style={styles.headerContainer}>
+        <Text style={styles.title}>Products</Text>
+        <Text style={styles.tagLine}>
+          Price and others details may varybased on product asize & color
+        </Text>
+      </View>
+      {loading ? (
+        <View style={styles.activityIndicator}>
+          <ActivityIndicator size="large" color="#0000ff" />
+          <Text>Loading Please Wait...</Text>
+        </View>
+      ) : (
+        <FlatList
+          data={product}
+          renderItem={({ item, index }) => (
+            <View style={styles.productContainer} key={index}>
+              <View style={styles.productSection}>
+                <View style={styles.productImgSection}>
+                  <Image
+                    style={styles.productImg}
+                    source={{ uri: item.image }}
+                  />
                 </View>
-                <View style={styles.row}>
-                  {/* <Text style={styles.price}>₹ {item.discount}</Text>
-                  <Text style={styles.mrp}>M.R.P</Text> */}
-                  <Text style={styles.crossout}> ₹ {item.price}</Text>
+                <View style={styles.productDetailSection}>
+                  <Text style={styles.sponsored}>Sponsored</Text>
+                  <Text style={styles.productName}>{item.title}</Text>
+                  <View style={styles.row}>
+                    <Text style={styles.rating}>
+                      {getRating(item.rating.rate)}
+                    </Text>
+                    <Text style={styles.rating}>{item.rating.count}</Text>
+                  </View>
+                  <View style={styles.row}>
+                    {/* <Text style={styles.price}>₹ {item.discountPrice}</Text> */}
+                    <Text style={styles.mrp}>M.R.P</Text>
+                    <Text style={styles.price}> $ {item.price}</Text>
+                  </View>
+                  <Text style={styles.cashback}>
+                    Upto 5% cashback with amazon pay credit card
+                  </Text>
+                  {`${item.rating.count}` >= 300 ? (
+                    <Image source={PrimeLogo} style={styles.primeLogo}></Image>
+                  ) : (
+                    ""
+                  )}
+                  {/* <Text style={styles.cashback}>{item.deliveryBy}</Text> */}
                 </View>
-                <Text style={styles.cashback}>
-                  Upto 5% cashback with amazon pay credit card
-                </Text>
-                <Image source={PrimeLogo} style={styles.primeLogo}></Image>
-                <Text style={styles.cashback}>{item.deliveryBy}</Text>
               </View>
             </View>
-          </View>
-        )}
-        keyExtractor={(item) => item.id.toString()}
-        contentContainerStyle={styles.container}
-        // horizontal={true}
-        // removeClippedSubviews={true} // Enable virtualization
-        // initialNumToRender={5}
-      />
+          )}
+          keyExtractor={(item) => item.id.toString()}
+          contentContainerStyle={styles.container}
+          // horizontal={true}
+          // removeClippedSubviews={true} // Enable virtualization
+          // initialNumToRender={5}
+        />
+      )}
     </View>
   );
 };
@@ -76,7 +100,23 @@ const ProductScreen = () => {
 export default ProductScreen;
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    paddingVertical: 20,
+    // paddingHorizontal: 5,
+  },
+  activityIndicator: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 300,
+  },
+  headerContainer: {
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    backgroundColor: "skyblue",
+  },
+  productContainer: {
+    marginVertical: 10,
+  },
   title: {
     fontSize: 18,
     fontWeight: "bold",
@@ -90,7 +130,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#dddddd",
     flexDirection: "row",
-    marginVertical: 15,
   },
   productImgSection: {
     width: "40%",

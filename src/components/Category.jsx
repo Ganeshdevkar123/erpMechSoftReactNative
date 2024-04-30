@@ -7,13 +7,10 @@ import {
   TouchableOpacity,
 } from "react-native";
 import React from "react";
-import { useNavigation } from "@react-navigation/native";
 
 import { Categories } from "../data/Categories";
 
 const Category = ({navigation}) => {
-  // const navigation=useNavigation();
-  console.log('firstLog',navigation);
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.category}
