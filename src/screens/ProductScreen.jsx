@@ -17,11 +17,6 @@ const ProductScreen = ({ route }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   productData(category);
-  //   // fetchDataByCategory(category);
-  // }, []);
-
   useEffect(() => {
     fetchData(category);
   }, [category]); // Re-fetch products when category changes
