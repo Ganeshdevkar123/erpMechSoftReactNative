@@ -11,27 +11,36 @@ import PrimeLogo from "../assets/categories/prime-logo.png";
 // import { ProductData } from "../data/ProductData";
 import { getRating } from "../utils/helper";
 
-const ProductScreen = () => {
-  const [product, setProduct] = useState(null); // Changed to setProduct for single product
+const ProductScreen = ({ route }) => {
+  console.log(route.params);
+  const { category } = route.params;
+  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    productData();
-  }, []);
+  // useEffect(() => {
+  //   productData(category);
+  //   // fetchDataByCategory(category);
+  // }, []);
 
-  const productData = () => {
-    fetch(`https://fakestoreapi.com/products/`)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setProduct(data);
-        setLoading(false); // Set loading state to false when data is fetched
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-        setLoading(false); // Ensure loading state is set to false in case of error
-      });
+  useEffect(() => {
+    fetchData(category);
+  }, [category]); // Re-fetch products when category changes
+
+  const fetchData = async (category) => {
+    try {
+      const response = await fetch(
+        `https://fakestoreapi.com/products?category=${category}`
+      );
+      const data = await response.json();
+      const filteredProducts = data.filter(
+        (products) => products.category === category
+      );
+      setProducts(filteredProducts);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
   };
 
   return (
@@ -49,7 +58,7 @@ const ProductScreen = () => {
         </View>
       ) : (
         <FlatList
-          data={product}
+          data={products}
           renderItem={({ item, index }) => (
             <View style={styles.productContainer} key={index}>
               <View style={styles.productSection}>
@@ -81,7 +90,7 @@ const ProductScreen = () => {
                   ) : (
                     ""
                   )}
-                  {/* <Text style={styles.cashback}>{item.deliveryBy}</Text> */}
+                  <Text style={styles.cashback}>{item.category}</Text>
                 </View>
               </View>
             </View>

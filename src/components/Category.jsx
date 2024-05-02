@@ -16,7 +16,7 @@ const Category = ({navigation}) => {
       style={styles.category}
       key={item.id}
       onPress={() => {
-        navigation.navigate("Product");
+        navigation.navigate("Product", { category: item.title }); // Pass category information
       }}
     >
       <Image style={styles.imgStyle} source={item.image} />

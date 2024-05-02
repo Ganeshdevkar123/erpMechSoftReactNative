@@ -16,69 +16,70 @@ import More from "../assets/categories/more.png";
 export const Categories = [
   {
     id: 1,
-    image: Prime,
-    title: "Prime",
+    image: Electronics,
+    title: "electronics",
   },
   {
     id: 2,
-    image: Fresh,
-    title: "Fresh",
+    image: Fashon,
+    title: "women's clothing",
   },
   {
     id: 3,
-    image: Deals,
-    title: "Deals",
+    image: Beauty,
+    title: "jewelery",
   },
   {
     id: 4,
-    image: Beauty,
-    title: "Beauty",
+    image: Deals,
+    title: "men's clothing",
   },
-  {
-    id: 5,
-    image: Electronics,
-    title: "Electronics",
-  },
-  {
-    id: 6,
-    image: Fashon,
-    title: "Fashon",
-  },
-  {
-    id: 7,
-    image: Mobiles,
-    title: "Mobiles",
-  },
-  {
-    id: 8,
-    image: Books,
-    title: "Books",
-  },
-  {
-    id: 9,
-    image: Home,
-    title: "Home",
-  },
-  {
-    id: 10,
-    image: MiniTV,
-    title: "MiniTV",
-  },
-  {
-    id: 11,
-    image: Pharmacy,
-    title: "Pharmacy",
-  },
-  {
-    id: 12,
-    image: Travel,
-    title: "Travel",
-  },
-  {
-    id: 13,
-    image: Furniture,
-    title: "Furniture",
-  },
+  // {
+  //   id: 1,
+  //   image: Prime,
+  //   title: "Prime",
+  // },
+  // {
+  //   id: 4,
+  //   image: Fresh,
+  //   title: "women's clothing",
+  // },
+ 
+  // {
+  //   id: 7,
+  //   image: Mobiles,
+  //   title: "Mobiles",
+  // },
+  // {
+  //   id: 8,
+  //   image: Books,
+  //   title: "Books",
+  // },
+  // {
+  //   id: 9,
+  //   image: Home,
+  //   title: "Home",
+  // },
+  // {
+  //   id: 10,
+  //   image: MiniTV,
+  //   title: "MiniTV",
+  // },
+  // {
+  //   id: 11,
+  //   image: Pharmacy,
+  //   title: "Pharmacy",
+  // },
+  // {
+  //   id: 12,
+  //   image: Travel,
+  //   title: "Travel",
+  // },
+  // {
+  //   id: 13,
+  //   image: Furniture,
+  //   title: "Furniture",
+  // },
   {
     id: 14,
     image: More,
