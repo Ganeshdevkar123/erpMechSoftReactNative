@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
-// import LinearGradient from "react-native-linear-gradient";
+import LinearGradient from "react-native-linear-gradient";
 import Icon from "react-native-vector-icons/FontAwesome";
 import SearchFilter from "./SearchFilter";
 
@@ -94,8 +94,8 @@ const styles = StyleSheet.create({
   inputtext: {
     paddingHorizontal: 10,
   },
-  filterContainer:{
-    position:'absolute',
-    zIndex:999
-  }
+  filterContainer: {
+    position: "absolute",
+    zIndex: 999,
+  },
 });

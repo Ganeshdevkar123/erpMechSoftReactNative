@@ -2,20 +2,23 @@ import {
   ActivityIndicator,
   FlatList,
   Image,
+  Pressable,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import PrimeLogo from "../assets/categories/prime-logo.png";
 // import { ProductData } from "../data/ProductData";
 import { getRating } from "../utils/helper";
+import { useNavigation } from "@react-navigation/native";
 
 const ProductScreen = ({ route }) => {
-  console.log(route.params);
   const { category } = route.params;
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigation = useNavigation();
 
   useEffect(() => {
     fetchData(category);
@@ -24,13 +27,28 @@ const ProductScreen = ({ route }) => {
   const fetchData = async (category) => {
     try {
       const response = await fetch(
-        `https://fakestoreapi.com/products?category=${category}`
+        `https://fakestoreapi.com/products${
+          category ? `?category=${category}` : ""
+        }`
       );
       const data = await response.json();
-      const filteredProducts = data.filter(
-        (products) => products.category === category
-      );
+
+      let filteredProducts = data;
+
+      if (category) {
+        // Filter products based on the provided category
+        filteredProducts = data.filter(
+          (product) => product.category === category
+        );
+      }
+
+      if (filteredProducts.length === 0) {
+        // If no products match the category, display all products
+        filteredProducts = data;
+      }
+
       setProducts(filteredProducts);
+
       setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -38,14 +56,13 @@ const ProductScreen = ({ route }) => {
     }
   };
 
+  const handleProductPress = (product) => {
+    // Navigate to ProductDetailsScreen with product details
+    navigation.navigate("ProductDetails", { product });
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.headerContainer}>
-        <Text style={styles.title}>Products</Text>
-        <Text style={styles.tagLine}>
-          Price and others details may varybased on product asize & color
-        </Text>
-      </View>
       {loading ? (
         <View style={styles.activityIndicator}>
           <ActivityIndicator size="large" color="#0000ff" />
@@ -55,7 +72,11 @@ const ProductScreen = ({ route }) => {
         <FlatList
           data={products}
           renderItem={({ item, index }) => (
-            <View style={styles.productContainer} key={index}>
+            <Pressable
+              style={styles.productContainer}
+              key={index}
+              onPress={() => handleProductPress(item)}
+            >
               <View style={styles.productSection}>
                 <View style={styles.productImgSection}>
                   <Image
@@ -80,7 +101,7 @@ const ProductScreen = ({ route }) => {
                   <Text style={styles.cashback}>
                     Upto 5% cashback with amazon pay credit card
                   </Text>
-                  {`${item.rating.count}` >= 300 ? (
+                  {`${item.price}` >= 300 ? (
                     <Image source={PrimeLogo} style={styles.primeLogo}></Image>
                   ) : (
                     ""
@@ -88,7 +109,7 @@ const ProductScreen = ({ route }) => {
                   <Text style={styles.cashback}>{item.category}</Text>
                 </View>
               </View>
-            </View>
+            </Pressable>
           )}
           keyExtractor={(item) => item.id.toString()}
           contentContainerStyle={styles.container}
@@ -185,5 +206,12 @@ const styles = StyleSheet.create({
     height: 16,
     width: 42,
     marginTop: 3,
+  },
+  productItem: {
+    marginBottom: 20,
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 5,
   },
 });

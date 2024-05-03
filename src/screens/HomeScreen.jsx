@@ -11,7 +11,6 @@ import Brands from "../components/Brands";
 const HomeScreen = ({ navigation }) => {
   return (
     <View>
-      <Header navigation={navigation} style={styles.header} />
       <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <SubHeader navigation={navigation} />
         <Category navigation={navigation} />
@@ -28,7 +27,6 @@ export default HomeScreen;
 
 const styles = StyleSheet.create({
   container: {
-    // paddingTop: 25,
   },
   header:{
     position:'absolute',

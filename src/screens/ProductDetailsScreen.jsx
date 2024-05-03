@@ -1,0 +1,101 @@
+// ProductDetailsScreen.js
+
+import React from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
+
+const ProductDetailsScreen = ({ route }) => {
+  const { product } = route.params;
+
+  const addToCart = () => {
+    // Implement your addToCart logic here
+    console.log("Product added to cart:", product);
+  };
+
+  const buyNow = () => {
+    // Implement your addToCart logic here
+    console.log("Buy Now Product:", product);
+  };
+
+  return (
+    <View style={styles.container}>
+      <ScrollView style={styles.productContainer}>
+        <Text style={styles.title}>{product.title}</Text>
+        <Image source={{ uri: product.image }} style={styles.productImage} />
+        <Text style={styles.description}>{product.description}</Text>
+        <Text style={styles.price}>Price: $ {product.price}</Text>
+        <View style={styles.buttonGroup}>
+          <TouchableOpacity onPress={addToCart} style={styles.addToCartButton}>
+            <Text style={styles.addToCartButtonText}>Add to Cart</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={buyNow} style={styles.buyNowButton}>
+            <Text style={styles.buyNowButtonText}>Bay Now</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  productContainer: {
+    flex: 1,
+    alignContent: "center",
+    padding: 20,
+  },
+  title: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  description: {
+    fontSize: 16,
+    marginBottom: 10,
+  },
+  price: {
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 20,
+  },
+  buttonGroup: {
+    gap: 10,
+  },
+  addToCartButton: {
+    backgroundColor: "yellow",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  addToCartButtonText: {
+    textAlign: "center",
+    color: "#000",
+    fontSize: 16,
+  },
+  buyNowButton: {
+    backgroundColor: "orange",
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buyNowButtonText: {
+    textAlign: "center",
+    color: "#000",
+    fontSize: 16,
+  },
+  productImage: {
+    height: 300,
+    width: "100%",
+    marginBottom: 20,
+  },
+});
+
+export default ProductDetailsScreen;

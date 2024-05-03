@@ -35,14 +35,14 @@ export const Categories = [
     title: "men's clothing",
   },
   // {
-  //   id: 1,
-  //   image: Prime,
-  //   title: "Prime",
+  //   id: 5,
+  //   image: MiniTV,
+  //   title: "tv",
   // },
   // {
-  //   id: 4,
+  //   id: 6,
   //   image: Fresh,
-  //   title: "women's clothing",
+  //   title: "audio",
   // },
  
   // {
@@ -53,17 +53,17 @@ export const Categories = [
   // {
   //   id: 8,
   //   image: Books,
-  //   title: "Books",
+  //   title: "laptop",
   // },
   // {
   //   id: 9,
   //   image: Home,
-  //   title: "Home",
+  //   title: "gaming",
   // },
   // {
   //   id: 10,
   //   image: MiniTV,
-  //   title: "MiniTV",
+  //   title: "appliances",
   // },
   // {
   //   id: 11,
