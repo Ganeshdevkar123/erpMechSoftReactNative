@@ -101,7 +101,7 @@ const ProductScreen = ({ route }) => {
                   <Text style={styles.cashback}>
                     Upto 5% cashback with amazon pay credit card
                   </Text>
-                  {`${item.price}` >= 300 ? (
+                  {`${item.rating.count}` >= 300 ? (
                     <Image source={PrimeLogo} style={styles.primeLogo}></Image>
                   ) : (
                     ""
@@ -126,7 +126,6 @@ export default ProductScreen;
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 20,
     // paddingHorizontal: 5,
   },
   activityIndicator: {

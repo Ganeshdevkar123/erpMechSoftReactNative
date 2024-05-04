@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  SafeAreaView,
 } from "react-native";
 
 const ProductDetailsScreen = ({ route }) => {
@@ -24,8 +25,11 @@ const ProductDetailsScreen = ({ route }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <ScrollView style={styles.productContainer}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        style={styles.productContainer}
+        showsVerticalScrollIndicator={false}
+      >
         <Text style={styles.title}>{product.title}</Text>
         <Image source={{ uri: product.image }} style={styles.productImage} />
         <Text style={styles.description}>{product.description}</Text>
@@ -39,18 +43,18 @@ const ProductDetailsScreen = ({ route }) => {
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    padding:15,
   },
   productContainer: {
     flex: 1,
     alignContent: "center",
-    padding: 20,
   },
   title: {
     fontSize: 20,

@@ -1,6 +1,6 @@
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, TextInput, View } from "react-native";
 import React, { useState } from "react";
-import LinearGradient from "react-native-linear-gradient";
+import { LinearGradient } from "expo-linear-gradient";
 import Icon from "react-native-vector-icons/FontAwesome";
 import SearchFilter from "./SearchFilter";
 
@@ -32,8 +32,13 @@ const Header = () => {
   const [input, setInput] = useState("");
   console.log(input);
   return (
-    <>
-      <View style={styles.container}>
+    <SafeAreaView >
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        colors={["#88dae0", "#98e1d6", "#9ee4d4"]}
+        style={styles.container}
+      >
         <View style={styles.inputbox}>
           <View style={styles.inputwsearch}>
             <Icon name="search" size={20} color="#000" />
@@ -48,17 +53,9 @@ const Header = () => {
           <Icon name="microphone" size={20} color="gray" />
         </View>
         <Icon name="barcode" size={20} color="#900" />
-
-        {/* <LinearGradient
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
-        colors={["#88dae0", "#98e1d6", "#9ee4d4"]}
-      >
-        <Text style={styles.container}>Header</Text>
-      </LinearGradient> */}
-      </View>
+      </LinearGradient>
       {/* <SearchFilter style={styles.filterContainer} data={data} input={input} setInput={setInput} /> */}
-    </>
+    </SafeAreaView>
   );
 };
 

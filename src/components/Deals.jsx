@@ -9,7 +9,7 @@ const Deals = ({navigation}) => {
       <Image source={Recommended} style={styles.imgStyle}></Image>
       <View style={styles.bottomSection}>
         <View style={styles.row}>
-          <TouchableOpacity onPress={()=>{navigation.navigate("Product")}} style={styles.offDealBtn}>
+          <TouchableOpacity onPress={()=>{navigation.navigate("Cart")}} style={styles.offDealBtn}>
             <Text style={styles.offDeal}>18% Off</Text>
           </TouchableOpacity>
           <Text style={styles.deal}>Deal</Text>
