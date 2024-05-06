@@ -6,6 +6,8 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  Animated,
+  Easing,
   View,
 } from "react-native";
 import React, { useEffect, useState } from "react";
@@ -19,10 +21,21 @@ const ProductScreen = ({ route }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigation = useNavigation();
+  const [progress] = useState(new Animated.Value(50));
 
   useEffect(() => {
+    if (loading) {
+      Animated.timing(progress, {
+        toValue: 100,
+        duration: 2000,
+        easing: Easing.linear,
+        useNativeDriver: false,
+      }).start();
+    } else {
+      progress.setValue(0);
+    }
     fetchData(category);
-  }, [category]); // Re-fetch products when category changes
+  }, [category, progress, loading]); // Re-fetch products when category changes
 
   const fetchData = async (category) => {
     try {
@@ -64,10 +77,25 @@ const ProductScreen = ({ route }) => {
   return (
     <View style={styles.container}>
       {loading ? (
-        <View style={styles.activityIndicator}>
-          <ActivityIndicator size="large" color="#0000ff" />
-          <Text>Loading Please Wait...</Text>
-        </View>
+        <>
+          <View style={styles.progessBar}>
+            <Animated.View
+              style={[
+                styles.progress,
+                {
+                  width: progress.interpolate({
+                    inputRange: [0, 100],
+                    outputRange: ["0%", "100%"],
+                  }),
+                },
+              ]}
+            />
+          </View>
+          {/* <View style={styles.activityIndicator}>
+            <ActivityIndicator size="large" color="#0000ff" />
+            <Text>Loading Please Wait...</Text>
+          </View> */}
+        </>
       ) : (
         <FlatList
           data={products}
@@ -132,6 +160,17 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     marginTop: 300,
+  },
+  progessBar: {
+    height: 5,
+    width: "100%",
+    backgroundColor: "#E4080A",
+    borderRadius: 5,
+    overflow: "hidden",
+  },
+  progress: {
+    height: "100%",
+    backgroundColor: "#E9551F", // Amazon's color
   },
   headerContainer: {
     paddingHorizontal: 10,

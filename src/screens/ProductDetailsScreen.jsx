@@ -16,8 +16,8 @@ const ProductDetailsScreen = ({ route }) => {
 
   const addToCart = () => {
     // Implement your addToCart logic here
-    // console.log("Product added to cart:", product);
-    navigation.navigate("Cart");
+    console.log("Product added to cart:", product);
+    // navigation.navigate("Cart");
   };
 
   const buyNow = () => {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: "gold",
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 5,
+    borderRadius: 50,
   },
   addToCartButtonText: {
     textAlign: "center",
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
     backgroundColor: "orange",
     paddingVertical: 10,
     paddingHorizontal: 20,
-    borderRadius: 5,
+    borderRadius: 50,
   },
   buyNowButtonText: {
     textAlign: "center",

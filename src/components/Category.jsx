@@ -11,10 +11,10 @@ import React from "react";
 import { Categories } from "../data/Categories";
 
 const Category = ({ navigation }) => {
-  const renderItem = ({ item }) => (
+  const renderItem = ({ item, index }) => (
     <TouchableOpacity
       style={styles.category}
-      key={item.id}
+      key={index}
       onPress={() => {
         navigation.navigate("Product", { category: item.title }); // Pass category information
       }}
@@ -31,7 +31,7 @@ const Category = ({ navigation }) => {
       <FlatList
         data={Categories}
         renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item) => item.id}
         contentContainerStyle={styles.container}
         horizontal={true}
       />

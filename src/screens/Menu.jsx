@@ -75,7 +75,7 @@ const Menu = ({ navigation }) => {
 
   return (
     <ScrollView style={styles.container}>
-      <LinearGradient colors={["rgba(5, 250, 242,0.4)", "#fff"]}>
+      <LinearGradient colors={["#98e1d6", "#98e1d6", "#fff"]}>
         <View style={styles.itemCont}>
           {menuData.map((item) => (
             <MenuItemCard title={item.text} img={item.img} />

@@ -52,7 +52,7 @@ const Header = () => {
           </View>
           <Icon name="microphone" size={20} color="gray" />
         </View>
-        <Icon name="barcode" size={20} color="#900" />
+        <Icon name="qrcode" size={25} color="#000" />
       </LinearGradient>
       {/* <SearchFilter style={styles.filterContainer} data={data} input={input} setInput={setInput} /> */}
     </SafeAreaView>
@@ -64,7 +64,7 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     paddingVertical: 10,
     paddingTop: 30,
     flexDirection: "row",

@@ -22,16 +22,12 @@ export default MenuItemCard;
 const styles = StyleSheet.create({
   container: {
     height: 180,
-    width: 150,
+    width: 160,
     borderRadius: 5,
     backgroundColor:"white",
     padding:5,
     margin:5,
-    // gap:10,
-    shadowColor:"black",
-    shadowOffset:{width:0,height:3},
-    shadowOpacity:0.4,
-    shadowRadius:10,
+    elevation:8
   },
   menuText: {
     fontWeight: "600",

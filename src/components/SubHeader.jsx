@@ -7,13 +7,13 @@ const SubHeader = () => {
   return (
     <LinearGradient
       start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 0 }}
+      end={{ x: 0, y: 0 }}
       colors={["#99dae0", "#99dae0", "#85dae0"]}
       style={styles.container}
     >
-      <Icon name="bus" size={15} color="#000" />
+      <Icon name="globe" size={15} color="#000" />
       <Text>Deliver to User - Location Postal-Code</Text>
-      <Icon name="chevron-down" size={15} color="gray" />
+      <Icon name="chevron-down" size={12} color="gray" />
     </LinearGradient>
   );
 };
@@ -22,7 +22,7 @@ export default SubHeader;
 
 const styles = StyleSheet.create({
   container: {
-    padding: 5,
+    paddingVertical:10,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "skyblue",
