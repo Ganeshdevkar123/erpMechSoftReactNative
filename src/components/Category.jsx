@@ -10,7 +10,7 @@ import React from "react";
 
 import { Categories } from "../data/Categories";
 
-const Category = ({navigation}) => {
+const Category = ({ navigation }) => {
   const renderItem = ({ item }) => (
     <TouchableOpacity
       style={styles.category}
@@ -19,7 +19,9 @@ const Category = ({navigation}) => {
         navigation.navigate("Product", { category: item.title }); // Pass category information
       }}
     >
-      <Image style={styles.imgStyle} source={item.image} />
+      <View style={{ backgroundColor: "gold", borderRadius: 50 }}>
+        <Image style={styles.imgStyle} source={item.image} />
+      </View>
       <Text>{item.title}</Text>
     </TouchableOpacity>
   );

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -10,7 +10,7 @@ import ProductDetailsScreen from "../screens/ProductDetailsScreen";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Profile from "../screens/Profile";
 import Menu from "../screens/Menu";
-import Cart from "../screens/Cart";
+import Cart from "../screens/CartScreen";
 
 const Router = () => {
   const Tab = createBottomTabNavigator();
@@ -47,7 +47,7 @@ const Router = () => {
           },
           tabStyle: {
             padding: 5, // Padding at the top of each tab
-            borderBottomWidth: 1, // Border on top of the tab bar
+            borderBottomWidth: 0.5, // Border on top of the tab bar
             borderBottomColor: "lightgray", // Border color
           },
         }}

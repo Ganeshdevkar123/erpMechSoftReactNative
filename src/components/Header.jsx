@@ -64,12 +64,13 @@ export default Header;
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    padding: 10,
+    paddingHorizontal: 10,
+    paddingVertical: 10,
+    paddingTop: 30,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
     backgroundColor: "skyblue",
-    paddingTop: 25,
   },
   inputbox: {
     flexDirection: "row",

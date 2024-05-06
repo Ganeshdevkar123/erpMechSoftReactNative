@@ -1,6 +1,3 @@
-// ProductDetailsScreen.js
-
-import React from "react";
 import {
   View,
   Text,
@@ -10,17 +7,21 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
+import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 const ProductDetailsScreen = ({ route }) => {
   const { product } = route.params;
+  const navigation = useNavigation();
 
   const addToCart = () => {
     // Implement your addToCart logic here
-    console.log("Product added to cart:", product);
+    // console.log("Product added to cart:", product);
+    navigation.navigate("Cart");
   };
 
   const buyNow = () => {
-    // Implement your addToCart logic here
+    // Implement your Buy Now logic here
     console.log("Buy Now Product:", product);
   };
 
@@ -50,7 +51,7 @@ const ProductDetailsScreen = ({ route }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding:15,
+    padding: 15,
   },
   productContainer: {
     flex: 1,
@@ -74,7 +75,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   addToCartButton: {
-    backgroundColor: "yellow",
+    backgroundColor: "gold",
     paddingVertical: 10,
     paddingHorizontal: 20,
     borderRadius: 5,
