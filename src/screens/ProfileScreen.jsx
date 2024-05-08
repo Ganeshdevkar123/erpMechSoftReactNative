@@ -14,37 +14,6 @@ import {
 } from "../data/ProfileData";
 
 const ProfileScreen = ({ navigation }) => {
-  useEffect(() =>
-    navigation.setOptions({
-      headerTitle: "",
-      headerLeft: () => (
-        <Image
-          // source={require("../../assets/amazon.png")}
-          style={{ height: 30, width: 90, marginLeft: 10, backgroundColor: "" }}
-        />
-      ),
-      headerRight: () => (
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            marginRight: 10,
-          }}
-        >
-          <MaterialIcons
-            name="notifications-none"
-            size={26}
-            style={{ marginRight: 5 }}
-          />
-          <MaterialIcons name="search" size={26} />
-        </View>
-      ),
-      headerStyle: {
-        backgroundColor: "rgba(5, 250, 242,0.4)",
-        borderBottomWidth: 0,
-      },
-    })
-  );
 
   return (
     <ScrollView style={styles.container}>

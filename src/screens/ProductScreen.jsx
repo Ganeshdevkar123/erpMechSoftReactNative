@@ -9,12 +9,14 @@ import {
   Animated,
   Easing,
   View,
+  Button,
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import PrimeLogo from "../assets/categories/prime-logo.png";
-// import { ProductData } from "../data/ProductData";
+import { ProductData } from "../data/ProductData";
 import { getRating } from "../utils/helper";
 import { useNavigation } from "@react-navigation/native";
+// import firebase from "../utils/FirebaseConnection";
 
 const ProductScreen = ({ route }) => {
   const { category } = route.params;
@@ -39,25 +41,17 @@ const ProductScreen = ({ route }) => {
 
   const fetchData = async (category) => {
     try {
-      const response = await fetch(
-        `https://fakestoreapi.com/products${
-          category ? `?category=${category}` : ""
-        }`
-      );
-      const data = await response.json();
-
-      let filteredProducts = data;
+      let filteredProducts = ProductData; // Start with all products
 
       if (category) {
         // Filter products based on the provided category
-        filteredProducts = data.filter(
+        filteredProducts = ProductData.filter(
           (product) => product.category === category
         );
       }
-
       if (filteredProducts.length === 0) {
         // If no products match the category, display all products
-        filteredProducts = data;
+        filteredProducts = ProductData;
       }
 
       setProducts(filteredProducts);
@@ -116,10 +110,8 @@ const ProductScreen = ({ route }) => {
                   <Text style={styles.sponsored}>Sponsored</Text>
                   <Text style={styles.productName}>{item.title}</Text>
                   <View style={styles.row}>
-                    <Text style={styles.rating}>
-                      {getRating(item.rating.rate)}
-                    </Text>
-                    <Text style={styles.rating}>{item.rating.count}</Text>
+                    <Text style={styles.rating}>{getRating(item.rating)}</Text>
+                    <Text style={styles.rating}>{item.ratingCount}</Text>
                   </View>
                   <View style={styles.row}>
                     {/* <Text style={styles.price}>₹ {item.discountPrice}</Text> */}
@@ -129,12 +121,20 @@ const ProductScreen = ({ route }) => {
                   <Text style={styles.cashback}>
                     Upto 5% cashback with amazon pay credit card
                   </Text>
-                  {`${item.rating.count}` >= 300 ? (
+                  {`${item.ratingCount}` >= 1000 ? (
                     <Image source={PrimeLogo} style={styles.primeLogo}></Image>
                   ) : (
                     ""
                   )}
                   <Text style={styles.cashback}>{item.category}</Text>
+                  <Button
+                    title="Update"
+                    onPress={() => navigation.navigate("ProductCrud")}
+                  ></Button>
+                  <Button
+                    title="Delete"
+                    onPress={() => navigation.navigate("ProductCrud")}
+                  ></Button>
                 </View>
               </View>
             </Pressable>

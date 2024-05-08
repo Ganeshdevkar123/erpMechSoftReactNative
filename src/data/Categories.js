@@ -16,73 +16,73 @@ import More from "../assets/categories/more.png";
 export const Categories = [
   {
     id: 1,
-    image: Electronics,
-    title: "electronics",
+    image: Prime,
+    catName: "Prime",
   },
   {
     id: 2,
-    image: Fashon,
-    title: "women's clothing",
+    image: Fresh,
+    catName: "Fresh",
   },
   {
     id: 3,
     image: Beauty,
-    title: "jewelery",
+    catName: "Beauty",
   },
   {
     id: 4,
     image: Deals,
-    title: "men's clothing",
+    catName: "Deals",
   },
-  // {
-  //   id: 5,
-  //   image: MiniTV,
-  //   title: "tv",
-  // },
-  // {
-  //   id: 6,
-  //   image: Fresh,
-  //   title: "audio",
-  // },
+  {
+    id: 5,
+    image: Electronics,
+    catName: "Electronics",
+  },
+  {
+    id: 6,
+    image: Fashon,
+    catName: "Fashon",
+  },
  
-  // {
-  //   id: 7,
-  //   image: Mobiles,
-  //   title: "Mobiles",
-  // },
-  // {
-  //   id: 8,
-  //   image: Books,
-  //   title: "laptop",
-  // },
-  // {
-  //   id: 9,
-  //   image: Home,
-  //   title: "gaming",
-  // },
-  // {
-  //   id: 10,
-  //   image: MiniTV,
-  //   title: "appliances",
-  // },
-  // {
-  //   id: 11,
-  //   image: Pharmacy,
-  //   title: "Pharmacy",
-  // },
-  // {
-  //   id: 12,
-  //   image: Travel,
-  //   title: "Travel",
-  // },
-  // {
-  //   id: 13,
-  //   image: Furniture,
-  //   title: "Furniture",
-  // },
+  {
+    id: 7,
+    image: Mobiles,
+    catName: "Mobiles",
+  },
+  {
+    id: 8,
+    image: Books,
+    catName: "Books",
+  },
+  {
+    id: 9,
+    image: Home,
+    catName: "Home",
+  },
+  {
+    id: 10,
+    image: MiniTV,
+    catName: "MiniTV",
+  },
+  {
+    id: 11,
+    image: Pharmacy,
+    catName: "Pharmacy",
+  },
+  {
+    id: 12,
+    image: Travel,
+    catName: "Travel",
+  },
+  {
+    id: 13,
+    image: Furniture,
+    catName: "Furniture",
+  },
   {
     id: 14,
     image: More,
-    title: "More",
+    catName: "More",
   },
 ];

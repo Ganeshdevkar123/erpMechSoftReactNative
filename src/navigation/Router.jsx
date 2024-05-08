@@ -12,6 +12,7 @@ import ProductDetailsScreen from "../screens/ProductDetailsScreen";
 import Profile from "../screens/ProfileScreen";
 import Menu from "../screens/Menu";
 import Cart from "../screens/CartScreen";
+import ProductCrudScreen from "../screens/ProductCrudScreen";
 
 const Router = () => {
   const Tab = createBottomTabNavigator();
@@ -98,6 +99,7 @@ const Router = () => {
           component={ProductDetailsScreen}
         ></Stack.Screen>
         <Stack.Screen name="Product" component={ProductScreen}></Stack.Screen>
+        <Stack.Screen name="ProductCrud" component={ProductCrudScreen}></Stack.Screen>
       </Stack.Navigator>
     );
   };

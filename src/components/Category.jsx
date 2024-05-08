@@ -16,13 +16,13 @@ const Category = ({ navigation }) => {
       style={styles.category}
       key={index}
       onPress={() => {
-        navigation.navigate("Product", { category: item.title }); // Pass category information
+        navigation.navigate("Product", { category: item.catName}); // Pass category information
       }}
     >
       <View style={{ backgroundColor: "gold", borderRadius: 50 }}>
         <Image style={styles.imgStyle} source={item.image} />
       </View>
-      <Text>{item.title}</Text>
+      <Text>{item.catName}</Text>
     </TouchableOpacity>
   );
 
